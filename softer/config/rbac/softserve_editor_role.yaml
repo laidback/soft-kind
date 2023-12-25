@@ -1,0 +1,31 @@
+# permissions for end users to edit softserves.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: softserve-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: softer
+    app.kubernetes.io/part-of: softer
+    app.kubernetes.io/managed-by: kustomize
+  name: softserve-editor-role
+rules:
+- apiGroups:
+  - laidback.github.io
+  resources:
+  - softserves
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - laidback.github.io
+  resources:
+  - softserves/status
+  verbs:
+  - get

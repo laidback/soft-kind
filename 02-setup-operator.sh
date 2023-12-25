@@ -122,7 +122,7 @@ merge_operators() {
     cp -r ../helm-operator/config/samples .
 
     # mv files to avoid conflict with go-operator
-    cp ../helm-operator//Dockerfile ./helm-chart.Dockerfile
+    cp ../helm-operator/Dockerfile ./helm-chart.Dockerfile
     cp ../helm-operator/Makefile ./helm-chart.Makefile
 
     # watches.yaml is not a problem, we need only the go one
@@ -133,16 +133,38 @@ merge_operators() {
 #    for file in $(ls ../helm-operator/config); do
 #        cp -r "config/$file" "../config/helm-chart-$file"
 #    done
+    cp -r ../helm-operator/crd ./config/crd
 
     # cleanup helm project and cd back to the operator-sdk go project
     gum confirm "delete operands?" && rm -rf go-operator helm-operator
 }
+
+# build operator image and push to ghcr.io repository
+build_operator() {
+    local err=0
+    local ret=""
+
+    # TODO: implement this, meanwhile use the following:
+    # * run via makefile using make run
+    # * run via makefile using make deploy
+    # * run via olm using operator-sdk olm install
+    echo "run via makefile using make run"
+    echo "run via makefile using make deploy"
+    echo "run via olm using operator-sdk olm install"
+    return $err
+
+    # build operator image
+    operator-sdk build $image
+    docker push $image
+}
+
 
 # array of functions in this script
 declare -a functions=(
     "init_go_operator"
     "init_helm_operator"
     "merge_operators"
+    "build_operator"
 )
 
 # main function
