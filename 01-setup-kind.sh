@@ -79,6 +79,44 @@ bootstrap_flux(){
     fi
 }
 
+# flux bootstrap with github if not bootstrapped
+bootstrap_github() {
+    local err=0
+    local ret=""
+
+    # definte git config variables
+    local host="${host:-$(ls -1 $REPOS | gum choose)}"; err=$?
+    test $err -ne 0 && exit $err
+
+    local group="${group:-$(ls -1 $REPOS/$gitlab_host | gum choose)}"; err=$?
+    test $err -ne 0 && exit $err
+
+    local gitlab_repo="softer"
+    local gitlab_path="clusters/kind"
+    local gitlab_branch="main"
+
+    local flux_namespace="ghcr-flux-system"
+
+    flux bootstrap github \                                                                                                                                                                                          (󱃾|kind-kind@kind-kind/) |  | laid@disco
+      --hostname github.com \
+      --owner laidback \
+      --repository softer \
+      --path "clusters/kind" \
+      --branch main \
+      --personal \
+      --insecure-skip-tls-verify \
+      --kubeconfig "${KUBECONFIG}" \
+      --namespace "ghcr-flux-system" \
+      --token-auth
+
+    echo "bootstrapping github ..."
+    if [[ "$err" -ne 0 ]]; then
+        echo "could not bootstrap github ..."
+        echo -e "ret: $ret\nerr: $err"
+        return $err
+    fi
+}
+
 # flux bootstrap with gitlab if not bootstrapped
 bootstrap_gitlab() {
     local err=0
@@ -121,6 +159,7 @@ declare -a functions=(
     "print_env"
     "create_cluster"
     "bootstrap_flux"
+    "bootstrap_github"
     "bootstrap_gitlab"
 )
 
