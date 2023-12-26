@@ -1,2 +1,4 @@
 go-operator
 helm-operator
+cover.out
+softer/bin/*
