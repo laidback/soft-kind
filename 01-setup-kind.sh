@@ -91,19 +91,19 @@ bootstrap_github() {
     local group="${group:-$(ls -1 $REPOS/$gitlab_host | gum choose)}"; err=$?
     test $err -ne 0 && exit $err
 
-    local gitlab_repo="softer"
-    local gitlab_path="clusters/kind"
-    local gitlab_branch="main"
+    local repo="softer"
+    local path="clusters/kind"
+    local branch="main"
 
     local flux_namespace="ghcr-flux-system"
 
     ret=$(flux bootstrap github \                                                                                                                                                                                          (󱃾|kind-kind@kind-kind/) |  | laid@disco
-      --hostname github.com \
-      --owner laidback \
-      --repository softer \
-      --path "clusters/kind" \
-      --branch main \
+      --hostname "${host}" \
+      --repository "${repo}" \
+      --owner "${group}" \
       --personal \
+      --path "${path}" \
+      --branch ${branch} \
       --insecure-skip-tls-verify \
       --kubeconfig "${KUBECONFIG}" \
       --namespace "ghcr-flux-system" \
