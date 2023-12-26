@@ -97,7 +97,7 @@ bootstrap_github() {
 
     local flux_namespace="ghcr-flux-system"
 
-    flux bootstrap github \                                                                                                                                                                                          (󱃾|kind-kind@kind-kind/) |  | laid@disco
+    ret=$(flux bootstrap github \                                                                                                                                                                                          (󱃾|kind-kind@kind-kind/) |  | laid@disco
       --hostname github.com \
       --owner laidback \
       --repository softer \
@@ -107,7 +107,7 @@ bootstrap_github() {
       --insecure-skip-tls-verify \
       --kubeconfig "${KUBECONFIG}" \
       --namespace "ghcr-flux-system" \
-      --token-auth
+      --token-auth); err=$?
 
     echo "bootstrapping github ..."
     if [[ "$err" -ne 0 ]]; then
@@ -135,7 +135,7 @@ bootstrap_gitlab() {
 
     local flux_namespace="flux-system"
 
-    flux bootstrap gitlab \
+    ret=$(flux bootstrap gitlab \
         --hostname "${gitlab_host}" \
         --owner "${gitlab_group}" --personal \
         --repository "${gitlab_repo}" \
@@ -144,7 +144,7 @@ bootstrap_gitlab() {
         --deploy-token-auth \
         --insecure-skip-tls-verify true \
         --kubeconfig "${KUBECONFIG}" \
-        --namespace "${flux_namespace}"
+        --namespace "${flux_namespace}"); err=$?
 
     echo "bootstrapping gitlab ..."
     if [[ "$err" -ne 0 ]]; then
