@@ -3,4 +3,5 @@
 # It should be run by config/default
 resources:
 - bases/laidback.github.io_softserves.yaml
+- bases/cache.laidback.github.io_memcacheds.yaml
 #+kubebuilder:scaffold:crdkustomizeresource

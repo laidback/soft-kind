@@ -1,0 +1,12 @@
+apiVersion: cache.laidback.github.io/v1alpha1
+kind: Memcached
+metadata:
+  labels:
+    app.kubernetes.io/name: memcached
+    app.kubernetes.io/instance: memcached-sample
+    app.kubernetes.io/part-of: soft-serve
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: soft-serve
+  name: memcached-sample
+spec:
+  # TODO(user): Add fields here
