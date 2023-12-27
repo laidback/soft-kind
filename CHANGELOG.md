@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/laidback/soft-kind/compare/1.1.0...1.2.0) (2023-12-27)
+
+
+### Features
+
+* update softer ([0fd11e4](https://github.com/laidback/soft-kind/commit/0fd11e444a8113956d8c83dfa35fb5fc081c8307))
+
 # [1.1.0](https://github.com/laidback/soft-kind/compare/1.0.0...1.1.0) (2023-12-26)
 
 
