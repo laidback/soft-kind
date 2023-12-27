@@ -8,7 +8,25 @@ metadata:
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
-  customresourcedefinitions: {}
+  customresourcedefinitions:
+    owned:
+    - description: Memcached is the Schema for the memcacheds API
+      displayName: Memcached
+      kind: Memcached
+      name: memcacheds.cache.laidback.github.io
+      specDescriptors:
+      - description: Port defines the port that will be used to init the container
+          with the image
+        displayName: Container Port
+        path: containerPort
+      - description: Size defines the number of Memcached instances
+        displayName: Size
+        path: size
+      statusDescriptors:
+      - description: Conditions store the status conditions of the Memcached instances
+        displayName: Conditions
+        path: conditions
+      version: v1alpha1
   description: softer
   displayName: softer
   icon:

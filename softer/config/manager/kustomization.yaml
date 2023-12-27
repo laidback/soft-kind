@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: controller
   newName: ghcr.io/laidback/softer
-  newTag: 0.0.1
+  newTag: 1.2.0
