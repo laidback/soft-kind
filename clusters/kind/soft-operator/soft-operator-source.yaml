@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: soft-operator-helm-repository
+  namespace: ghcr-flux-system
+spec:
+  interval: 1m0s
+  secretRef:
+    name: soft-operator-regcred
+  type: oci
+  url: oci://github.com/laidback/soft-operator

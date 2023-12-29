@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: soft-operator-regcred
+  namespace: ghcr-flux-system
+stringData:
+  .dockerconfigjson: '{"auths":{"ghcr.io":{"username":"soft-operator-regcred","password":"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","auth":"c29mdC1vcGVyYXRvci1yZWdjcmVkOmdocF9NUE9ZZVhMQ2VOaUV4cmFjREtDZHhLSGFPcXBRemowY1p4ano="}}}'
+type: kubernetes.io/dockerconfigjson
+
